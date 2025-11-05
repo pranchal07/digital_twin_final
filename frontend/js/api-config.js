@@ -1,7 +1,7 @@
 // Digital Twin - Backend API Configuration
 
 const API_CONFIG = {
-    BASE_URL: 'http://127.0.0.1:8000/api',
+    BASE_URL: 'http://localhost:8000/api',
     ENDPOINTS: {
         SIGNUP: '/auth/signup/',
         LOGIN: '/auth/login/',
@@ -69,7 +69,7 @@ class API {
                     return this.request(endpoint, options);
                 } else {
                     this.clearTokens();
-                    window.location.href = '/index.html';
+                    window.location.href = '/login.html';
                     throw new Error('Session expired');
                 }
             }
@@ -144,7 +144,7 @@ class API {
 
     logout() {
         this.clearTokens();
-        window.location.href = '/index.html';
+        window.location.href = '/login.html';
     }
 
     async createVital(vitalData) {
@@ -199,6 +199,10 @@ class API {
         return this.request(endpoint);
     }
 
+    async getActiveGoals() {
+        return this.request(API_CONFIG.ENDPOINTS.GOALS_ACTIVE);
+    }
+
     async updateGoal(id, updates) {
         return this.request(`${API_CONFIG.ENDPOINTS.GOALS}${id}/`, {
             method: 'PUT',
@@ -242,6 +246,6 @@ window.DigitalTwinAPI.isAuthenticated = function() {
 };
 window.DigitalTwinAPI.protectPage = function() {
     if (!this.isAuthenticated()) {
-        window.location.href = '/index.html';
+        window.location.href = '/login.html';
     }
 };

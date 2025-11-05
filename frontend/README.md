@@ -1,64 +1,124 @@
-# Digital Twin - Frontend
+# Digital Twin Frontend - UPDATED VERSION
 
-## Web Interface for Student Health Tracking
+## What's New in This Version
 
-This is the frontend web interface built with vanilla HTML, CSS, and JavaScript.
+### ✨ Major Updates:
+
+1. **Login/Signup Page Added**
+   - New professional login and signup page
+   - Accessible via "Get Started" button on landing page
+   - Full form validation
+   - Backend API integration
+
+2. **Multiple Data Entry Support**
+   - Fixed: No longer auto-redirects after single entry
+   - Users can add multiple health records
+   - Two action buttons after submission:
+     * "Add Another Entry" - Reset form for new data
+     * "View Dashboard" - Go to dashboard
+
+3. **Dashboard Now Shows Real Backend Data**
+   - Fetches data from Django backend API
+   - Displays actual user health records
+   - Shows analytics based on real data
+   - Personalized recommendations
+   - Active goals from backend
+
+4. **Complete Authentication Flow**
+   - Login required to access dashboard and data entry
+   - JWT token management
+   - Automatic token refresh
+   - Secure logout
+
+## Files Structure
+
+```
+frontend/
+├── index.html (updated)
+├── login.html (NEW)
+├── dashboard.html
+├── manual-entry.html
+├── profile.html
+├── analytics.html
+├── about.html
+├── css/
+│   ├── auth.css (NEW)
+│   ├── styles.css
+│   ├── dashboard.css
+│   ├── components.css
+│   ├── forms.css
+│   ├── charts.css
+│   └── responsive.css
+└── js/
+    ├── api-config.js (backend connector)
+    ├── auth.js (NEW)
+    ├── forms.js (UPDATED)
+    ├── dashboard.js (UPDATED)
+    ├── main.js
+    ├── data-manager.js
+    └── theme-manager.js
+```
+
+## Setup Instructions
+
+1. **Extract this ZIP file**
+
+2. **Ensure Backend is Running**
+   - Backend should be running at `http://localhost:8000`
+   - If backend runs on different port, update `js/api-config.js`
+
+3. **Start Frontend Server**
+   ```bash
+   python -m http.server 5500
+   ```
+   Or use VS Code Live Server
+
+4. **Access the Application**
+   - Open: `http://localhost:5500`
+   - Click "Get Started"
+   - Create account or login
+   - Start adding health data!
+
+## User Flow
+
+1. **Landing Page** → Click "Get Started"
+2. **Login/Signup Page** → Create account or login
+3. **Dashboard** → View your health data and analytics
+4. **Data Entry** → Add health records (multiple entries allowed)
+5. **Dashboard** → See updated data from backend
 
 ## Features
 
-- User authentication (login/signup)
-- Health data entry forms
-- Interactive dashboard with charts
-- Analytics and insights
-- Profile management
-- Responsive design
+✅ Secure authentication with JWT
+✅ Multiple data entry without redirect
+✅ Real-time data from backend API
+✅ Professional UI/UX
+✅ Fully responsive design
+✅ Error handling and loading states
 
-## Setup
+## Important Notes
 
-1. Ensure backend is running at http://localhost:8000
-2. Start a web server in this directory:
-   ```
-   python -m http.server 5500
-   ```
-3. Open http://localhost:5500 in your browser
+- **Backend Required**: This frontend connects to Django backend API
+- **API Configuration**: Check `js/api-config.js` for API endpoints
+- **Authentication**: All protected pages require login
+- **Data Persistence**: All data saved to PostgreSQL database
 
-## Files
+## Troubleshooting
 
-- **index.html** - Landing page
-- **dashboard.html** - Main dashboard
-- **manual-entry.html** - Data entry form
-- **profile.html** - User profile
-- **analytics.html** - Analytics page
-- **about.html** - About page
+**Issue: "Session expired" message**
+- Solution: Backend might not be running. Start backend server.
 
-### JavaScript
-- **api-config.js** - Backend API connection (IMPORTANT!)
-- **main.js** - Main application logic
-- **dashboard.js** - Dashboard functionality
-- **forms.js** - Form handling
-- **data-manager.js** - Data management
-- **theme-manager.js** - Theme switching
+**Issue: Login doesn't work**
+- Solution: Check if backend is accessible at `http://localhost:8000`
 
-### CSS
-- **styles.css** - Main styles
-- **dashboard.css** - Dashboard styles
-- **components.css** - Component styles
-- **forms.css** - Form styles
-- **charts.css** - Chart styles
-- **responsive.css** - Responsive design
+**Issue: Data not showing on dashboard**
+- Solution: Add data via "Data Entry" page first
 
-## Important
+**Issue: CORS errors**
+- Solution: Ensure backend CORS settings allow `http://localhost:5500`
 
-The **api-config.js** file connects the frontend to the backend API. 
-If your backend runs on a different port, update the BASE_URL in this file.
+## Support
 
-## Usage
+For backend setup, see the backend README.md in the main project ZIP.
 
-1. Create an account on the landing page
-2. Login with your credentials
-3. Go to "Data Entry" to add health data
-4. View your data on the "Dashboard"
-5. Check "Analytics" for insights
-6. Manage your profile in "Profile" page
-
-Enjoy!
+Enjoy your Digital Twin application! 🚀
