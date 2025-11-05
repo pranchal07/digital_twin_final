@@ -116,9 +116,15 @@ SIMPLE_JWT = {
 # CORS
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://127.0.0.1:5500,http://localhost:5500'
+    default='https://digital-twin-frontend-loy5.onrender.com,http://localhost:3000,http://127.0.0.1:5500,http://localhost:5500'
 ).split(',')
+
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://digital-twin-frontend-loy5.onrender.com",
+]
+
 
 # API Documentation
 SPECTACULAR_SETTINGS = {
